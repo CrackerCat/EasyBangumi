@@ -7,8 +7,6 @@ pluginManagement {
         google()
         gradlePluginPortal()
         mavenCentral()
-        maven { url = uri("https://s01.oss.sonatype.org/content/repositories/snapshots/") }
-        maven { url = uri("https://jitpack.io") }
     }
 }
 
@@ -17,11 +15,11 @@ dependencyResolutionManagement {
         google()
         mavenCentral()
         maven("https://maven.pkg.jetbrains.space/public/p/compose/dev")
-        maven { url = uri("https://s01.oss.sonatype.org/content/repositories/snapshots/") }
-        maven { url = uri("https://jitpack.io") }
     }
 }
 
 include(":composeApp")
-include(":injekt")
+include(":inject")
 include(":lib_upnp")
+include(":extension:source_api")
+include(":extension:source_utils")

@@ -33,7 +33,18 @@ kotlin {
             implementation(compose.components.uiToolingPreview)
             implementation(compose.material3)
 
-            implementation(project(":injekt"))
+            implementation(libs.moshi)
+            implementation(libs.jsoup)
+
+            implementation(libs.kotlin.coroutines.core)
+            implementation(libs.ktor.client.core)
+            implementation(libs.ktor.client.serialization)
+
+            implementation(kotlin("reflect"))
+
+            implementation(project(":extension:source_api"))
+            implementation(project(":extension:source_utils"))
+            implementation(project(":inject"))
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)

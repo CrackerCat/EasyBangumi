@@ -46,7 +46,7 @@ public class JaxpParser extends Parser
 	//	parse (Node)
 	////////////////////////////////////////////////
 
-	public org.cybergarage.xml.Node parse(org.cybergarage.xml.Node parentNode, org.w3c.dom.Node domNode, int rank)
+	public Node parse(Node parentNode, org.w3c.dom.Node domNode, int rank)
 	{
 		int domNodeType = domNode.getNodeType();
 //		if (domNodeType != Node.ELEMENT_NODE)
@@ -69,7 +69,7 @@ public class JaxpParser extends Parser
 		if (domNodeType != org.w3c.dom.Node.ELEMENT_NODE)
 			return parentNode;
 
-		org.cybergarage.xml.Node node = new org.cybergarage.xml.Node();
+		Node node = new Node();
 		node.setName(domNodeName);
 		node.setValue(domNodeValue);
 
@@ -101,7 +101,7 @@ public class JaxpParser extends Parser
 		return node;
 	}
 
-	public org.cybergarage.xml.Node parse(org.cybergarage.xml.Node parentNode, org.w3c.dom.Node domNode)
+	public Node parse(Node parentNode, org.w3c.dom.Node domNode)
 	{
 		return parse(parentNode, domNode, 0);
 	}
@@ -111,7 +111,7 @@ public class JaxpParser extends Parser
 	 */
 	public Node parse(InputStream inStream) throws ParserException
 	{
-		org.cybergarage.xml.Node root = null;
+		Node root = null;
 		
 		try {
 			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
