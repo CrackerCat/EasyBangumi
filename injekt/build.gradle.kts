@@ -1,6 +1,6 @@
 plugins {
     id("java-library")
-    alias(build.plugins.kotlin.jvm)
+    id("org.jetbrains.kotlin.jvm")
 }
 kotlin {
     jvmToolchain(17)
