@@ -1,5 +1,5 @@
+
 interface Platform {
     val name: String
+    val rootDirPath: String
 }
-
-expect fun getPlatform(): Platform

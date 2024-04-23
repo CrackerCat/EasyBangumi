@@ -1,6 +1,6 @@
 package com.heyanle.easy_bangumi_cm
 
-import App
+import ui.App
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent

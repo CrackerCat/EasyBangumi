@@ -5,7 +5,6 @@ package com.heyanle.inject.core
 import com.heyanle.inject.api.InjectScope
 import com.heyanle.inject.api.InjectionException
 import com.heyanle.inject.api.TypeReference
-import com.heyanle.inject.api.erasedType
 import java.lang.reflect.Type
 import java.util.concurrent.ConcurrentHashMap
 

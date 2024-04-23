@@ -13,3 +13,11 @@ interface InjectModule {
     fun InjectScope.registerInjectables()
 
 }
+
+fun module(init: InjectScope.() -> Unit): InjectModule {
+    return object : InjectModule {
+        override fun InjectScope.registerInjectables() {
+            init()
+        }
+    }
+}
