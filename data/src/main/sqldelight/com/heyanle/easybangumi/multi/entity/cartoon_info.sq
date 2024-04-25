@@ -1,0 +1,123 @@
+import com.heyanle.easybangumi.multi.data.CartoonInfo.CartoonStatus;
+import com.heyanle.easybangumi.multi.data.CartoonInfo.UpdateStrategy;
+import com.heyanle.easybangumi.multi.data.CartoonInfo;
+import kotlin.Boolean;
+
+-- 番剧信息总线结构
+-- 1. 标识
+-- 2. 封面数据 首页/搜索页
+-- 3. 详情页数据
+-- 4. 偏好设置
+-- 5. 收藏数据
+-- 6. 播放历史数据
+-- 7. 缓存数据
+CREATE TABLE DCartoonInfo(
+    -- primary key ==========================================
+    id TEXT NOT NULL,
+    source_key TEXT NOT NULL,
+
+
+    -- cartoon cover ==========================================
+    -- 首页/搜索页 数据
+    name TEXT NOT NULL,
+    cover TEXT NOT NULL,
+    intro TEXT NOT NULL,
+    url TEXT NOT NULL,
+
+    -- cartoon detailed ==========================================
+    -- 播放详情页数据
+    is_detailed_loaded INTEGER AS Boolean NOT NULL DEFAULT 0,
+    -- "xx, xx"
+    genre TEXT NOT NULL DEFAULT '',
+    description TEXT NOT NULL DEFAULT '',
+
+    -- 年份
+    year INTEGER NOT NULL DEFAULT 0,
+    -- 月份
+    month INTEGER NOT NULL DEFAULT 0,
+
+    -- 0 -> Aways
+    -- 1 -> OnlyStrict
+    -- 2->Never
+    update_strategy TEXT AS CartoonInfo.UpdateStrategy NOT NULL DEFAULT 0,
+
+    is_update INTEGER AS Boolean  NOT NULL DEFAULT 0,
+
+    -- 0 -> Unknown
+    -- 1 -> Ongoing
+    -- 2 -> Finished
+    status TEXT AS CartoonInfo.CartoonStatus NOT NULL DEFAULT 0,
+    last_update_time INTEGER NOT NULL DEFAULT 0,
+
+    is_play_line_load INTEGER AS Boolean NOT NULL DEFAULT 0,
+    play_line_json TEXT NOT NULL DEFAULT 0,
+    is_show_line INTEGER AS Boolean NOT NULL DEFAULT 0,
+
+    -- cartoon preferences ==========================================
+    -- 播放页配置
+
+    is_reversal INTEGER AS Boolean NOT NULL DEFAULT 0,
+    episode_sort_key INTEGER NOT NULL DEFAULT 0,
+
+    -- cartoon star ==========================================
+    -- 收藏数据
+
+    -- "xx, xx"
+    tag_list TEXT NOT NULL DEFAULT '',
+
+    -- 为 0 则为没收藏
+    star_time INTEGER NOT NULL DEFAULT 0,
+
+    -- 为 0 则为没置顶
+    pin_time INTEGER NOT NULL DEFAULT 0,
+
+    -- cartoon history ==========================================
+    -- 播放历史数据
+
+    -- 最新数据更新时间
+    last_history_update_time INTEGER NOT NULL DEFAULT 0,
+    last_history_watch_time INTEGER NOT NULL DEFAULT 0,
+
+    last_line_id TEXT NOT NULL DEFAULT '',
+    last_line_name TEXT NOT NULL DEFAULT '',
+
+    last_episode_index INTEGER NOT NULL DEFAULT 0,
+    last_episode_count INTEGER NOT NULL DEFAULT 0,
+    last_episode_id TEXT NOT NULL DEFAULT '',
+    last_episode_name TEXT NOT NULL DEFAULT '',
+
+    last_progress_time INTEGER NOT NULL DEFAULT 0,
+
+
+    -- cartoon cache ==========================================
+    -- 数据缓存
+
+    source_name TEXT NOT NULL DEFAULT '',
+    extra TEXT NOT NULL DEFAULT '',
+
+
+    created_at INTEGER NOT NULL DEFAULT 0,
+    modified_at INTEGER NOT NULL DEFAULT 0,
+
+    PRIMARY KEY (id, source_key)
+);
+
+CREATE INDEX cartoon_info_index ON DCartoonInfo(id, source_key);
+CREATE INDEX cartoon_info_start ON DCartoonInfo(star_time);
+CREATE INDEX cartoon_info_pin ON DCartoonInfo(pin_time);
+
+insertOrReplace:
+INSERT OR REPLACE INTO DCartoonInfo VALUES ?;
+
+findAll:
+SELECT * FROM DCartoonInfo;
+
+findAllHistory:
+SELECT * FROM DCartoonInfo WHERE last_history_update_time > 0 ORDER BY last_history_watch_time DESC;
+
+findAllStared:
+SELECT * FROM DCartoonInfo WHERE star_time > 0;
+
+findAllByIdentify:
+SELECT * FROM DCartoonInfo WHERE id=? AND source_key=?;
+

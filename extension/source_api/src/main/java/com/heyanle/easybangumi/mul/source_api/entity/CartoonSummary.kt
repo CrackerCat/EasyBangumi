@@ -14,9 +14,9 @@ data class CartoonSummary(
 ) : Serializable {
 
     fun isChild(
-        cartoon: Cartoon
+        SCartoon: SCartoon
     ): Boolean{
-        return id == cartoon.id && source == cartoon.source
+        return id == SCartoon.id && source == SCartoon.source
     }
 
 

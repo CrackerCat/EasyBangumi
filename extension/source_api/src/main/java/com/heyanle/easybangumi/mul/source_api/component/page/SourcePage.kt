@@ -2,7 +2,7 @@ package com.heyanle.easybangumi.mul.source_api.component.page
 
 
 import com.heyanle.easybangumi.mul.source_api.SourceResult
-import com.heyanle.easybangumi.mul.source_api.entity.CartoonCover
+import com.heyanle.easybangumi.mul.source_api.entity.SCartoonCover
 
 /**
  * Created by HeYanLe on 2023/2/27 21:29.
@@ -49,7 +49,7 @@ sealed class SourcePage {
         abstract var firstKey: () -> Int
 
         // 加载某一页数据
-        abstract var load: suspend (Int) -> SourceResult<Pair<Int?, List<CartoonCover>>>
+        abstract var load: suspend (Int) -> SourceResult<Pair<Int?, List<SCartoonCover>>>
 
         /**
          * 带有番剧缩略图
@@ -59,7 +59,7 @@ sealed class SourcePage {
         class WithCover(
             override var label: String,
             override var firstKey: () -> Int,
-            override var load: suspend (Int) -> SourceResult<Pair<Int?, List<CartoonCover>>>,
+            override var load: suspend (Int) -> SourceResult<Pair<Int?, List<SCartoonCover>>>,
         ): SingleCartoonPage()
 
         /**
@@ -70,7 +70,7 @@ sealed class SourcePage {
         class WithoutCover(
             override var label: String,
             override var firstKey: () -> Int,
-            override var load: suspend (Int) -> SourceResult<Pair<Int?, List<CartoonCover>>>,
+            override var load: suspend (Int) -> SourceResult<Pair<Int?, List<SCartoonCover>>>,
         ): SingleCartoonPage()
 
     }

@@ -4,7 +4,17 @@ plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsCompose)
+    alias(libs.plugins.kotlinxSerialization)
+    alias(libs.plugins.sqldelight)
 }
+//
+//sqldelight {
+//    databases {
+//        create("BangumiDatabase") {
+//            packageName = "com.heyanle.easy_bangumi_multi.sq"
+//        }
+//    }
+//}
 
 kotlin {
     androidTarget {
@@ -23,6 +33,7 @@ kotlin {
         androidMain.dependencies {
             implementation(libs.compose.ui.tooling.preview)
             implementation(libs.androidx.activity.compose)
+            implementation(libs.sqldelight.android.driver)
         }
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -34,26 +45,31 @@ kotlin {
             implementation(compose.material3)
 
             implementation(libs.moshi)
+            implementation(libs.moshi.kotlin)
             implementation(libs.jsoup)
 
             implementation(libs.kotlin.coroutines.core)
             implementation(libs.ktor.client.core)
             implementation(libs.ktor.client.serialization)
 
+            implementation(libs.sqldelight.runtime)
+
             implementation(kotlin("reflect"))
 
+            implementation(project(":data"))
             implementation(project(":extension:source_api"))
             implementation(project(":extension:source_utils"))
             implementation(project(":inject"))
         }
         desktopMain.dependencies {
+            implementation(libs.sqldelight.sqlite.driver)
             implementation(compose.desktop.currentOs)
         }
     }
 }
 
 android {
-    namespace = "com.heyanle.easy_bangumi_cm"
+    namespace = "com.heyanle.easybangumi.multi"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
 
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
@@ -61,7 +77,7 @@ android {
     sourceSets["main"].resources.srcDirs("src/commonMain/resources")
 
     defaultConfig {
-        applicationId = "com.heyanle.easy_bangumi_cm"
+        applicationId = "com.heyanle.easybangumi.multi"
         minSdk = libs.versions.android.minSdk.get().toInt()
         targetSdk = libs.versions.android.targetSdk.get().toInt()
         versionCode = 1
@@ -88,11 +104,11 @@ android {
 
 compose.desktop {
     application {
-        mainClass = "MainKt"
+        mainClass = "com.heyanle.easybangumi.multi.MainKt"
 
         nativeDistributions {
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
-            packageName = "com.heyanle.easy_bangumi_cm"
+            packageName = "com.heyanle.easybangumi.multi"
             packageVersion = "1.0.0"
         }
     }

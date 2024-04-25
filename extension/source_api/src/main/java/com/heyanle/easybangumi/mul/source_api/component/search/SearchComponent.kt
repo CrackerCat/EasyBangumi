@@ -4,7 +4,7 @@ package com.heyanle.easybangumi.mul.source_api.component.search
 
 import com.heyanle.easybangumi.mul.source_api.SourceResult
 import com.heyanle.easybangumi.mul.source_api.component.Component
-import com.heyanle.easybangumi.mul.source_api.entity.CartoonCover
+import com.heyanle.easybangumi.mul.source_api.entity.SCartoonCover
 
 /**
  * Created by HeYanLe on 2023/10/18 23:46.
@@ -26,5 +26,5 @@ interface SearchComponent: Component {
      * @param keyword 关键字
      * @return 下一页页码（没有下一页则为 null）， 番剧列表
      */
-    suspend fun search(pageKey: Int, keyword: String): SourceResult<Pair<Int?, List<CartoonCover>>>
+    suspend fun search(pageKey: Int, keyword: String): SourceResult<Pair<Int?, List<SCartoonCover>>>
 }
