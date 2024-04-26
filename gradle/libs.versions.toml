@@ -23,7 +23,10 @@ lifecycleViewmodelCompose = "2.7.0"
 ktor = "2.3.10"
 jsoup = "1.16.1"
 moshi = "1.14.0"
+findbugs = "3.0.2"
 
+slf4j-nop = "2.0.13"
+kotlin-logging = "2.0.11"
 
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
@@ -54,6 +57,9 @@ sqldelight-runtime = { module = "app.cash.sqldelight:runtime", version.ref = "sq
 sqldelight-dialects-sql = { module = "app.cash.sqldelight:sqlite-3-38-dialect", version.ref = "sqlDelight" }
 sqldelight-coroutines = { module = "app.cash.sqldelight:coroutines-extensions-jvm", version.ref = "sqlDelight" }
 
+google-findbugs = { module = "com.google.code.findbugs:jsr305", version.ref = "findbugs" }
+kotlin-logging = { module = "io.github.microutils:kotlin-logging-jvm", version.ref = "kotlin-logging" }
+slf4j-nop = { module = "org.slf4j:slf4j-nop", version.ref = "slf4j-nop" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

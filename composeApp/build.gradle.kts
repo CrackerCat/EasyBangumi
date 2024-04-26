@@ -20,7 +20,7 @@ kotlin {
     androidTarget {
         compilations.all {
             kotlinOptions {
-                jvmTarget = "11"
+                jvmTarget = "17"
             }
         }
     }
@@ -54,6 +54,8 @@ kotlin {
 
             implementation(libs.sqldelight.runtime)
 
+            implementation(libs.google.findbugs)
+
             implementation(kotlin("reflect"))
 
             implementation(project(":data"))
@@ -64,7 +66,9 @@ kotlin {
         }
         desktopMain.dependencies {
             implementation(libs.sqldelight.sqlite.driver)
+            implementation(libs.kotlin.logging)
             implementation(compose.desktop.currentOs)
+            implementation(libs.slf4j.nop)
         }
     }
 }
@@ -95,8 +99,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     dependencies {
         debugImplementation(libs.compose.ui.tooling)
@@ -106,9 +110,9 @@ android {
 compose.desktop {
     application {
         mainClass = "com.heyanle.easybangumi.multi.MainKt"
-
         nativeDistributions {
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
+
             packageName = "com.heyanle.easybangumi.multi"
             packageVersion = "1.0.0"
         }

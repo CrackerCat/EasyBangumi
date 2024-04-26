@@ -10,6 +10,8 @@ import com.heyanle.inject.api.module
 import com.heyanle.easybangumi.multi.logger.AndroidLogger
 import com.heyanle.easybangumi.multi.logger.Level
 import com.heyanle.easybangumi.multi.logger.Logger
+import com.heyanle.easybangumi.multi.path.AndroidPathProvider
+import com.heyanle.easybangumi.multi.path.PathProvider
 
 
 /**
@@ -18,15 +20,15 @@ import com.heyanle.easybangumi.multi.logger.Logger
 actual fun getPlatformModules(): List<InjectModule> {
     return listOf(
         module {
+            addSingletonFactory<PathProvider> {
+                AndroidPathProvider(EasyApplication.APP)
+            }
             addSingletonFactory<Logger> {
                 AndroidLogger(Level.DEBUG)
             }
             addSingletonFactory<Platform> {
                 object : Platform {
                     override val name: String = "Android ${Build.VERSION.SDK_INT}"
-                    override val rootDirPath: String
-                        get() = EasyApplication.APP.getExternalFilesDir(null)?.absolutePath
-                            ?: EasyApplication.APP.cacheDir.absolutePath
                 }
             }
         }
