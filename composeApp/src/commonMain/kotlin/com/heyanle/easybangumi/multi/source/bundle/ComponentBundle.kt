@@ -10,7 +10,7 @@ import com.heyanle.easybangumi.mul.source_api.component.preference.PreferenceCom
 import com.heyanle.easybangumi.mul.source_api.component.search.SearchComponent
 import com.heyanle.easybangumi.mul.source_api.component.update.UpdateComponent
 import com.heyanle.inject.api.get
-import com.heyanle.inject.core.Inject
+import com.heyanle.easybangumi.multi.base.Inject
 import com.heyanle.easybangumi.multi.api.NetworkHelper
 import com.heyanle.easybangumi.multi.api.PreferenceHelper
 import com.heyanle.easybangumi.multi.api.WebViewHelper

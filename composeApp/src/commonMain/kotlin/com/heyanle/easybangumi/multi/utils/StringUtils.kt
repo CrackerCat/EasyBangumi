@@ -1,9 +1,9 @@
 package com.heyanle.easybangumi.multi.utils
 
+import com.heyanle.easybangumi.multi.base.Inject
 import com.heyanle.easybangumi.multi.logger.Level
 import com.heyanle.easybangumi.multi.logger.Logger
 import com.heyanle.inject.api.get
-import com.heyanle.inject.core.Inject
 
 /**
  * Created by heyanlin on 2024/4/23.

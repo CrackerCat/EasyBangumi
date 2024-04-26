@@ -57,6 +57,7 @@ kotlin {
             implementation(kotlin("reflect"))
 
             implementation(project(":data"))
+            implementation(project(":base"))
             implementation(project(":extension:source_api"))
             implementation(project(":extension:source_utils"))
             implementation(project(":inject"))

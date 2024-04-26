@@ -4,7 +4,7 @@ package com.heyanle.easybangumi.mul.source_api.component.detailed
 import com.heyanle.easybangumi.mul.source_api.SourceResult
 import com.heyanle.easybangumi.mul.source_api.component.Component
 import com.heyanle.easybangumi.mul.source_api.entity.SCartoon
-import com.heyanle.easybangumi.mul.source_api.entity.CartoonSummary
+import com.heyanle.easybangumi.mul.source_api.entity.SCartoonSummary
 import com.heyanle.easybangumi.mul.source_api.entity.SPlayLine
 
 /**
@@ -20,20 +20,20 @@ interface DetailedComponent: Component {
      * 获取番剧详细信息
      */
     suspend fun getDetailed(
-        summary: CartoonSummary
+        summary: SCartoonSummary
     ): SourceResult<SCartoon>
 
     /**
      * 获取播放线路
      */
     suspend fun getPlayLine(
-        summary: CartoonSummary
+        summary: SCartoonSummary
     ): SourceResult<List<SPlayLine>>
 
     /**
      * 同时获取
      */
     suspend fun getAll(
-        summary: CartoonSummary
+        summary: SCartoonSummary
     ): SourceResult<Pair<SCartoon, List<SPlayLine>>>
 }

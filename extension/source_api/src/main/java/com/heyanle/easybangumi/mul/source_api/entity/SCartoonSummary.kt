@@ -8,15 +8,15 @@ import java.io.Serializable
  * https://github.com/heyanLE
  */
 
-data class CartoonSummary(
+data class SCartoonSummary(
     var id: String,              // 标识，由源自己支持，用于区分番剧
     var source: String,
 ) : Serializable {
 
     fun isChild(
-        SCartoon: SCartoon
+        sCartoon: SCartoon
     ): Boolean{
-        return id == SCartoon.id && source == SCartoon.source
+        return id == sCartoon.id && source == sCartoon.source
     }
 
 
@@ -24,7 +24,7 @@ data class CartoonSummary(
         if (this === other) return true
         if (javaClass != other?.javaClass) return false
 
-        other as CartoonSummary
+        other as SCartoonSummary
 
         if (id != other.id) return false
         if (source != other.source) return false

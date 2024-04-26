@@ -10,7 +10,7 @@ package com.heyanle.easybangumi.mul.source_api.entity
 open class SPlayLine(
     val id: String, // 源自己维护和判断
     val label: String,
-    val SEpisodes: ArrayList<SEpisode>,
+    val episodes: ArrayList<SEpisode>,
 ){
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
@@ -20,7 +20,7 @@ open class SPlayLine(
 
         if (id != other.id) return false
         if (label != other.label) return false
-        if (SEpisodes != other.SEpisodes) return false
+        if (episodes != other.episodes) return false
 
         return true
     }
@@ -28,7 +28,7 @@ open class SPlayLine(
     override fun hashCode(): Int {
         var result = id.hashCode()
         result = 31 * result + label.hashCode()
-        result = 31 * result + SEpisodes.hashCode()
+        result = 31 * result + episodes.hashCode()
         return result
     }
 }

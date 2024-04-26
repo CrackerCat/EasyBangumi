@@ -3,7 +3,7 @@ package com.heyanle.easybangumi.mul.source_api.component.play
 
 import com.heyanle.easybangumi.mul.source_api.SourceResult
 import com.heyanle.easybangumi.mul.source_api.component.Component
-import com.heyanle.easybangumi.mul.source_api.entity.CartoonSummary
+import com.heyanle.easybangumi.mul.source_api.entity.SCartoonSummary
 import com.heyanle.easybangumi.mul.source_api.entity.SEpisode
 import com.heyanle.easybangumi.mul.source_api.entity.SPlayLine
 import com.heyanle.easybangumi.mul.source_api.entity.SPlayerInfo
@@ -20,7 +20,7 @@ interface PlayComponent: Component {
      * @param SEpisode 集
      */
     suspend fun getPlayInfo(
-        summary: CartoonSummary,
+        summary: SCartoonSummary,
         SPlayLine: SPlayLine,
         SEpisode: SEpisode,
     ): SourceResult<SPlayerInfo>
