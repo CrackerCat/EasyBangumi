@@ -2,6 +2,9 @@ package com.heyanle.easybangumi.multi.extension
 
 import com.heyanle.easybangumi.mul.source_api.Source
 import com.heyanle.easybangumi.multi.utils.getMatchReg
+import easybangumi.composeapp.generated.resources.Res
+import easybangumi.composeapp.generated.resources.app_name
+import org.jetbrains.compose.resources.ExperimentalResourceApi
 
 
 /**
@@ -57,7 +60,9 @@ sealed class Extension {
         val errMsg: String,
     ): Extension()
 
+    @OptIn(ExperimentalResourceApi::class)
     fun match(key: String): Boolean {
+        Res.string.app_name.key
         var matched = false
         for (match in key.split(',')) {
             val regex = match.getMatchReg()

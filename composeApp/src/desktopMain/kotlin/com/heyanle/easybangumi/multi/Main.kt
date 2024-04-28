@@ -5,8 +5,7 @@ import androidx.compose.material.Text
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
 import kotlinx.coroutines.runBlocking
-import ui.App
-import java.nio.file.Files
+import com.heyanle.easybangumi.multi.ui.App
 import java.nio.file.Paths
 
 fun main() {
