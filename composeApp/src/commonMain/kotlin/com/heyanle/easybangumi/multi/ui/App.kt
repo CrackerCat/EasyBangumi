@@ -1,4 +1,4 @@
-package ui
+package com.heyanle.easybangumi.multi.ui
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.layout.Column

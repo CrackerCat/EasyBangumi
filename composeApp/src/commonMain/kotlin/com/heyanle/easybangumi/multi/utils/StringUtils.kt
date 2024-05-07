@@ -1,9 +1,13 @@
 package com.heyanle.easybangumi.multi.utils
 
+import androidx.compose.runtime.Composable
 import com.heyanle.easybangumi.multi.base.Inject
 import com.heyanle.easybangumi.multi.logger.Level
 import com.heyanle.easybangumi.multi.logger.Logger
 import com.heyanle.inject.api.get
+import org.jetbrains.compose.resources.ExperimentalResourceApi
+import org.jetbrains.compose.resources.StringResource
+import org.jetbrains.compose.resources.stringResource
 
 /**
  * Created by heyanlin on 2024/4/23.
@@ -52,4 +56,14 @@ fun Any?.logw(tag: String) {
 fun Any?.loge(tag: String) {
     val logger = Inject.get<Logger>()
     logger.log(Level.ERROR, tag, this.toString())
+}
+
+
+@OptIn(ExperimentalResourceApi::class)
+@Composable
+fun stringOrResource(any: Any): String{
+    if (any is StringResource){
+        return stringResource(any)
+    }
+    return any.toString()
 }

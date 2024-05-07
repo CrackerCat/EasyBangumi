@@ -14,6 +14,6 @@ interface ExtensionController {
         val extensions: List<Extension>
     )
 
-    val loaderStateFlow: StateFlow<ExtensionLoaderState>
+    val loaderStateFlow: StateFlow<Map<String, ExtensionLoaderState>>
 
 }
